@@ -1,0 +1,14 @@
+{
+  "network": "monad-testnet",
+  "contractAddress": "0x036a1E2dFE63dD728701C61039417c3adCCfB864",
+  "deployerAddress": "0x1b9Aceb609a62bae0c0a9682A9268138Faff4F5f",
+  "transactionHash": "0xfc6698620f69553beb8b4cd112a81356943125b75425190fc5048d8904278c10",
+  "blockNumber": 38620780,
+  "timestamp": "2025-09-21T21:44:30.513Z",
+  "parameters": {
+    "minStakeAmount": "10000000000000000",
+    "maxStakeAmount": "500000000000000000",
+    "rewardMultiplier": 1500,
+    "slashingPenalty": 2000
+  }
+}
