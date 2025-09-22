@@ -131,7 +131,7 @@ contract IndexAgentStaking is ReentrancyGuard, Ownable, Pausable {
         totalStaked += msg.value;
 
         // Add stake to intent mappings
-        for (uint i = 0; i < intentIds.length; i++) {
+        for (uint256 i; i < intentIds.length; ++i) {
             intentStakes[intentIds[i]].push(stakeId);
         }
 
@@ -285,7 +285,7 @@ contract IndexAgentStaking is ReentrancyGuard, Ownable, Pausable {
         rewardsEarned = agentRewardsEarned[agent];
         
         uint256[] memory stakes_ = agentStakes[agent];
-        for (uint i = 0; i < stakes_.length; i++) {
+        for (uint256 i; i < stakes_.length; ++i) {
             if (stakes[stakes_[i]].status == StakeStatus.ACTIVE) {
                 activeStakes++;
             }
