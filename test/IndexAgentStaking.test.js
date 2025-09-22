@@ -184,4 +184,45 @@ describe("IndexAgentStaking", function () {
       expect(activeStakes).to.equal(2);
     });
   });
+
+  describe("Stake Withdrawal", function () {
+    it("Should allow withdrawal after stake duration and resolution", async function () {
+      const stakeAmount = ethers.parseEther("0.05");
+      
+      // Create stake
+      await indexAgentStaking.connect(agent1).stakeOnConnection(
+        ["intent1", "intent2"],
+        "Test connection for withdrawal",
+        { value: stakeAmount }
+      );
+
+      // Resolve as successful
+      await indexAgentStaking.resolveStakeSuccessful(1);
+
+      // Fast forward time by 7 days
+      await ethers.provider.send("evm_increaseTime", [7 * 24 * 60 * 60]);
+      await ethers.provider.send("evm_mine");
+
+      const initialBalance = await ethers.provider.getBalance(agent1.address);
+
+      // Withdraw stake
+      const tx = await indexAgentStaking.connect(agent1).withdrawStake(1);
+      const receipt = await tx.wait();
+      const gasUsed = receipt.gasUsed * receipt.gasPrice;
+
+      const finalBalance = await ethers.provider.getBalance(agent1.address);
+
+      // Check balance increased by stake amount (minus gas)
+      expect(finalBalance - initialBalance + gasUsed).to.equal(stakeAmount);
+
+      // Check stake status updated
+      const stake = await indexAgentStaking.getStake(1);
+      expect(stake.status).to.equal(4); // WITHDRAWN
+
+      // Verify event emission
+      await expect(tx)
+        .to.emit(indexAgentStaking, "StakeWithdrawn")
+        .withArgs(1, agent1.address, stakeAmount);
+    });
+  });
 });
