@@ -97,7 +97,7 @@ console.log("Rewards claimed successfully");
 
 - **Network**: Monad Testnet
 - **Chain ID**: 10143
-- **RPC URL**: https://testnet1.monad.xyz
+- **RPC URL**: https://testnet-rpc.monad.xyz
 - **Explorer**: https://testnet.monadexplorer.com
 - **Gas Price**: 52 gwei (fixed)
 - **Block Gas Limit**: 200M gas
