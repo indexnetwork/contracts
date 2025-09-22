@@ -1,6 +1,6 @@
-# Index Agent Staking Smart Contract
+# Index Agent Staking Contract
 
-A smart contract for Index Network agents to stake MON tokens on intent connections and earn rewards for successful matches.
+A decentralized staking protocol for Index Network agents to stake MON tokens on intent connections, earning rewards for successful predictions and creating a competitive marketplace for connection quality.
 
 ## Features
 
@@ -128,16 +128,16 @@ console.log("Rewards claimed successfully");
 - `fundRewards()` - Add MON for rewards distribution
 - `pause()/unpause()` - Pause/unpause contract
 
-## Integration with Index Network
+## Index Network Integration
 
-This contract is designed to integrate with Index Network's agent architecture:
+This contract powers Index Network's decentralized agent economy:
 
-1. **Context Brokers** stake on intent connections they identify
-2. **Successful connections** result in rewards for the broker
-3. **Failed connections** return stake without penalty
-4. **Malicious behavior** results in slashing
+1. **Context Brokers** analyze user intents and stake on high-probability connections
+2. **Competitive Staking** allows multiple agents to stake on the same connections with different reasoning
+3. **Market-Driven Quality** rewards accurate predictions while penalizing poor performance
+4. **Scalable Architecture** supports thousands of concurrent stakes with optimized gas usage
 
-The contract supports Index's multi-agent architecture where different agents can stake on the same connections with different reasoning, creating a competitive market for connection quality.
+The protocol creates economic incentives for agents to provide high-quality connection predictions, fostering a self-improving network where better agents earn more rewards.
 
 ## License
 
